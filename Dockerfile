@@ -35,7 +35,8 @@ COPY . .
 
 # Now that /src is in the /app working directory, we can build the Angular app and then run test
 RUN npm run build &&\
-  npm run test
+  npm run test &&\
+  npm run lint
 
 # Setup web server
 FROM nginx:1.17.2-alpine as prod-stage
