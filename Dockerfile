@@ -30,10 +30,10 @@ COPY package.json ./
 # Install NPM packages from package.json
 RUN npm install
 
-# Copy everything from /src folder into the /app working directory of the image
+# Copy everything not ignored in the .dockerignore file into the /app working directory of the image
 COPY . .
 
-# Now that /src is in the /app working directory, we can build the Angular app and then run test
+# Now that / is in the /app working directory, we can build the Angular app and then run test
 RUN npm run build &&\
   npm run test &&\
   npm run lint
@@ -44,7 +44,7 @@ FROM nginx:1.17.2-alpine as prod-stage
 # Copy the dist folder that was built by ng build and place it into the html folder our the nginx server, since thats where the default html for nginx lives
 COPY --from=build-step /app/dist/gcp-ci-cd /usr/share/nginx/html
 
-# Expose a port so we can interact with the app
+# Expose a port so we can interact with the app (Port 80 is exposed by default, being verbose here)
 EXPOSE 80
 
 # Need to run some commands so it runs when the image is ran
