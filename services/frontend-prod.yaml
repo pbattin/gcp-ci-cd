@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: preston-battin-website
+  name: preston-battin-website-frontend-production
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: preston-battin-website
+    role: frontend
+  sessionAffinity: None
+  type: LoadBalancer
