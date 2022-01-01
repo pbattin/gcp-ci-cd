@@ -1,7 +1,7 @@
 # Base Image
 FROM node:12.7.0-alpine as build-step
 
-# Installs latest Chromium package.
+# Installs latest Chromium package to run test
 RUN echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories \
   && echo @edge http://dl-cdn.alpinelinux.org/alpine/v3.10/main >> /etc/apk/repositories \
   && apk add --no-cache \
