@@ -3,9 +3,9 @@ FROM node:12.7.0-alpine as build-step
 
 # Installs latest Chromium package.
 RUN echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories \
-  && echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories \
+  && echo @edge http://dl-cdn.alpinelinux.org/alpine/v3.10/main >> /etc/apk/repositories \
   && apk add --no-cache \
-  chromium@edge \
+  chromium \
   harfbuzz@edge \
   nss@edge \
   freetype@edge \
